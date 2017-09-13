@@ -27,7 +27,7 @@ public class MyCardViewAdapter extends RecyclerView.Adapter<MyCardViewAdapter.Vi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.gifImageView.setImageResource(R.drawable.ic_check_black_24dp);
+        holder.gifImageView.setImageResource(R.drawable.word_art);
         holder.descriptionTextView.setText(todos.get(position).getDescription());
     }
 
