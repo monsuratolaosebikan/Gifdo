@@ -10,10 +10,11 @@ public class ToDo {
     String imageUrl;
     boolean isDone;
 
-    ToDo(String description, String imageUrl) {
+    ToDo(int id, String description, String imageUrl, int isDone) {
+        this.id = id;
         this.description = description;
         this.imageUrl = imageUrl;
-        this.isDone = false;
+        this.isDone = isDone == 1;
     }
 
     public int getId() {

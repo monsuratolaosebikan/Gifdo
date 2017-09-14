@@ -49,7 +49,6 @@ public class AddToDo extends AppCompatActivity {
     }
 
     public void createTodo() {
-        ToDo t = new ToDo(task, gifUrl);
         Log.d("new todo", task + " " + gifUrl);
         ContentValues values = new ContentValues();
         values.put("description", task);
