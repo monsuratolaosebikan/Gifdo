@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 
@@ -27,8 +29,11 @@ public class MyCardViewAdapter extends RecyclerView.Adapter<MyCardViewAdapter.Vi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.gifImageView.setImageResource(R.drawable.word_art);
+//        holder.gifImageView.setImageResource(R.drawable.word_art);
         holder.descriptionTextView.setText(todos.get(position).getDescription());
+        Glide.with(holder.gifImageView.getContext())
+                .load(todos.get(position).getImageUrl())
+                .into(holder.gifImageView);
     }
 
     @Override
