@@ -1,5 +1,7 @@
 package com.monsurat.gifdo;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +26,8 @@ public class AddToDo extends AppCompatActivity {
     public TextView taskTextView;
     private String gifUrl;
     private String task;
+    private SQLiteDatabase db;
+    private TodoDatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,8 @@ public class AddToDo extends AppCompatActivity {
         setContentView(R.layout.activity_add_to_do);
 
         taskTextView = (TextView) findViewById(R.id.taskTextView);
+        dbHelper = new TodoDatabaseHelper(this);
+        db = dbHelper.getWritableDatabase();
 
         FloatingActionButton confirmFab = (FloatingActionButton) findViewById(R.id.confirmFab);
         confirmFab.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +51,14 @@ public class AddToDo extends AppCompatActivity {
     public void createTodo() {
         ToDo t = new ToDo(task, gifUrl);
         Log.d("new todo", task + " " + gifUrl);
+        ContentValues values = new ContentValues();
+        values.put("description", task);
+        values.put("gifUrl", gifUrl);
+         values.put("isDone", 0);
+        Log.d("todo values", values.toString());
+        db.insert("todos", null, values);
+        db.close();
+        this.finish();
     }
 
     public void getGifUrl(String text) {
@@ -84,6 +98,7 @@ public class AddToDo extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("Add to do", "error getting gif url");
+                        Log.e("Add to do", error.toString());
                     }
                 });
 

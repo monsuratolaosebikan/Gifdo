@@ -5,6 +5,7 @@ package com.monsurat.gifdo;
  */
 
 public class ToDo {
+    int id;
     String description;
     String imageUrl;
     boolean isDone;
@@ -13,6 +14,10 @@ public class ToDo {
         this.description = description;
         this.imageUrl = imageUrl;
         this.isDone = false;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getDescription() {
