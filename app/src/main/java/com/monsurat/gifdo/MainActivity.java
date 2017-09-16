@@ -40,4 +40,5 @@ public class MainActivity extends AppCompatActivity {
             f.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
         }
     }
+
 }

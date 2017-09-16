@@ -1,6 +1,5 @@
 package com.monsurat.gifdo;
 
-import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +27,8 @@ public class AddToDo extends AppCompatActivity {
     private String task;
     private SQLiteDatabase db;
     private TodoDatabaseHelper dbHelper;
+    private ToDoDAO dao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class AddToDo extends AppCompatActivity {
         taskTextView = (TextView) findViewById(R.id.taskTextView);
         dbHelper = new TodoDatabaseHelper(this);
         db = dbHelper.getWritableDatabase();
+        dao = new ToDoDAO(getBaseContext());
 
         FloatingActionButton confirmFab = (FloatingActionButton) findViewById(R.id.confirmFab);
         confirmFab.setOnClickListener(new View.OnClickListener() {
@@ -49,14 +51,8 @@ public class AddToDo extends AppCompatActivity {
     }
 
     public void createTodo() {
-        Log.d("new todo", task + " " + gifUrl);
-        ContentValues values = new ContentValues();
-        values.put("description", task);
-        values.put("gifUrl", gifUrl);
-         values.put("isDone", 0);
-        Log.d("todo values", values.toString());
-        db.insert("todos", null, values);
-        db.close();
+        dao.createTodo(task, gifUrl);
+        dao.close();
         this.finish();
     }
 
