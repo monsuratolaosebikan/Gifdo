@@ -17,7 +17,6 @@ public class TodoDatabaseHelper extends SQLiteOpenHelper {
 
     TodoDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        Log.d("database", "it happened");
     }
 
 
@@ -25,8 +24,6 @@ public class TodoDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE todos (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 " description TEXT NOT NULL, gifUrl TEXT NOT NULL, isDone INTEGER NOT NULL );");
-        Log.d("database", "it was created");
-
     }
 
     @Override

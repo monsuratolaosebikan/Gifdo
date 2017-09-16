@@ -81,7 +81,6 @@ public class AddToDo extends AppCompatActivity {
                                                       .getJSONObject("fixed_width");
 
                             gifUrl = data.getString("url");
-                            Log.d("SUCCESS", gifUrl);
                             createTodo();
 
                         }

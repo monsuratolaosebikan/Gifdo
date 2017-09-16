@@ -8,9 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
 
 
@@ -49,15 +47,16 @@ public class MyCardViewAdapter extends RecyclerView.Adapter<MyCardViewAdapter.Vi
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.descriptionTextView.setText(todos.get(position).getDescription());
+
         Glide.with(holder.gifImageView.getContext())
                 .load(todos.get(position).getImageUrl())
                 .into(holder.gifImageView);
+
         holder.cardView.setOnLongClickListener(new View.OnLongClickListener(){
             @Override
             public boolean onLongClick(View view) {
                 ToDo todo = todos.get(position);
                 int id = todo.getId();
-                Log.d("id", ""+ id);
                 dao.deleteTodo(id);
                 todos.remove(position);
                 notifyItemRemoved(position);

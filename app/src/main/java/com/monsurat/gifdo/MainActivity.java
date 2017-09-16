@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddToDo.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -41,4 +41,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            CardFragment fragment = (CardFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
+            fragment.initializeList();
+            fragment.cardViewAdapter.notifyDataSetChanged();
+        }
+    }
 }
