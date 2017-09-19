@@ -14,7 +14,7 @@ This app was built for Tufts University COMP 150 - Mobile Development class taug
 ## Usage Instructions
 ### Creating a new todo
 Press the pink fab button with the plus sign and you will be taken to a new screen where you can enter the text
-of the todo. Once entered you can press the fab with a check mark to add the todo to the main list and your new todo will 
+of the todo. Once entered you can close your keyboard and press the fab with a check mark to add the todo to the main list and your new todo will 
 be displayed at the top of the list with a gif representation*.
 
 *correct representation of todo is not guaranteed
@@ -39,7 +39,7 @@ Long press a todo and it will be automatically deleted. *Warning*: there is no u
 - [Screen Recording](http://www.androidauthority.com/android-customization-screen-recording-adb-599331/) - how to make a screen recording using adb shell
 
 ## What I learned
-Completing this project gave me a crash course in android development. 
+Completing this project gave me a crash course in android development. I learned how to start activities and fragments, use recycler and card views, make an HTTP request, read and write to the built in sqlite database, and add external libraries to my project. And finally, I learned the pitfals of layouts not showing up as you want them to and how to fix some common issues.
 
 ## License
 MIT License
